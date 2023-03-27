@@ -8,7 +8,7 @@ class Menuitem:
 
 def add_contact_mode():
     name = input("Name >>> ")
-    num = input("Number >>>")
+    num = input("Number >>> ")
     contact = {name: num}
     return contacts.append(contact)
 
@@ -24,4 +24,6 @@ main_menu = ["_____MENU_____",
              Menuitem("Display list of contacts...", show_book),
              Menuitem("Delete selected contact...", del_contact)]           
 
-
+print(main_menu[0])
+for i in main_menu[1:]:
+    print(i.title)
