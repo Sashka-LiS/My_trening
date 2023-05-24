@@ -11,14 +11,17 @@ contacts = []
 for i in range(10):
     contacts.append(ContactRecord(1, "Lisimenko", "Alexandr", "Igorevich", "lis@mail.ru"))
 
+contacts.append(ContactRecord(2, "Ivanov", "Aleksey", "Fedorovich", "alexey@mail.ru"))
+
 def filter_func(list):
     index = 0
     first_cont = list[index]
     for contact in list[1:]:
-        if first_cont.surname == contact.surname and first_cont.name == contact.name and first_cont.father_name == contact.father_name and first_cont.email == contact.email:
+        if first_cont.id == contact.id:
             list.remove(contact)
         else:
             index += 1
     return list
 
-print(filter_func(contacts))
+for i in filter_func(contacts):
+    print(i.name)
