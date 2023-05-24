@@ -1,44 +1,24 @@
+class ContactRecord:
+    def __init__(self, id: int,surname: str, name: str, father_name: str, email: str):
+        self.id = id
+        self.surname = surname
+        self.name = name
+        self.father_name = father_name
+        self.email = email
+
 contacts = []
 
-class Menuitem:
-    def __init__(self, title, handler):
-        self.title = title
-        self.handler = handler
+for i in range(10):
+    contacts.append(ContactRecord(1, "Lisimenko", "Alexandr", "Igorevich", "lis@mail.ru"))
 
+def filter_func(list):
+    index = 0
+    first_cont = list[index]
+    for contact in list[1:]:
+        if first_cont.surname == contact.surname and first_cont.name == contact.name and first_cont.father_name == contact.father_name and first_cont.email == contact.email:
+            list.remove(contact)
+        else:
+            index += 1
+    return list
 
-def add_contact_mode():
-    name = input("Name >>> ")
-    num = input("Number >>> ")
-    contact = {name: num}
-    return contacts.append(contact)
-
-def show_book():
-    return contacts
-
-def del_contact():
-    name = input("Name >>> ")
-    del contacts[name]
-
-def print_menu(name_menu, menu):
-    num_item = 0
-    print(name_menu)
-    for i in menu:
-        num_item += 1
-        print(f"{num_item} - {i.title}")
-    response = (input("Select a menu item --> "))
-    while not is_valid_response(response, menu):
-        response = (input("Select a menu item --> "))
-    return response
-
-    
-def is_valid_response(response, menu):
-    if not response.isdigit() or int(response) < 0 or int(response) > len(menu):
-        return False
-    return True
-
-main_menu = [Menuitem("Adding a new contact...", add_contact_mode),
-             Menuitem("Display list of contacts...", show_book),
-             Menuitem("Delete selected contact...", del_contact)]           
-
-print_menu("_____MENU_____", main_menu)
-# print(len(main_menu))
+print(filter_func(contacts))
